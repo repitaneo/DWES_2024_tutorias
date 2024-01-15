@@ -1,5 +1,8 @@
 package com.spring.tutoriasEDU.planes;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,12 +19,18 @@ import org.springframework.web.servlet.ModelAndView;
 public class PlanController {	
 	
 	
+	@Autowired
+	PlanDao planDao;
+	
 	
 	@GetMapping("/plan")
 	public ModelAndView tutorias() {
 
 		ModelAndView model = new ModelAndView();
 		model.setViewName("planes");
+		
+		List<Plan> planes = (List<Plan>) planDao.findAll();
+		model.addObject("planes", planes);
 		
 		return model;
 	}

@@ -27,23 +27,11 @@
 					</tr>
 				  </thead>
 				  <tbody>
-					<tr>
-					  <th scope="row">1</th>
-					  <td>Plan 34GH</td>
-					  <td>Marcos</td>
-					  <td>1ESO-A</td>
-					</tr>
-					<tr>
-					  <th scope="row">2</th>
-					  <td>Plan BM65</td>
-					  <td>Pablo</td>
-					  <td>2ESO-B</td>
-					</tr>
-					<tr>
-					  <th scope="row">3</th>
-					  <td>Plan SA23</td>
-					  <td>Maria</td>
-					  <td>1ESO-B</td>
+					<tr th:each="plan: ${planes}">
+					  <th scope="row" th:text="${plan.id}">ID</th>
+					  <td th:text="${plan.nombre}">Nombre</td>
+					  <td th:text="${plan.tutor?.nombre}">Tutor</td>
+					  <td th:text="${plan.curso?.nombre}">Curso</td>
 					</tr>
 				  </tbody>
 				</table>
