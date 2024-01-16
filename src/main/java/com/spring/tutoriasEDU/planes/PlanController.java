@@ -71,7 +71,12 @@ public class PlanController {
 	@GetMapping("/plan/del/{id}")
 	public ModelAndView delPlan(@PathVariable long id) {
 				
-		return null;
+		planDao.deleteById(id);
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("redirect:/plan");
+		
+		return model;
 	}	
 	
 	

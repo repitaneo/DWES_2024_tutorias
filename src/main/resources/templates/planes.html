@@ -24,6 +24,7 @@
 					  <th scope="col">Nombre</th>
 					  <th scope="col">Tutor</th>
 					  <th scope="col">Curso</th>
+					  <th scope="col">X</th>
 					</tr>
 				  </thead>
 				  <tbody>
@@ -32,6 +33,7 @@
 					  <td th:text="${plan.nombre}">Nombre</td>
 					  <td th:text="${plan.tutor?.nombre}">Tutor</td>
 					  <td th:text="${plan.curso?.nombre}">Curso</td>
+					  <td><a th:if="${plan.tutor == null}" class="btn btn-outline-danger btn-sm" href="" th:href="@{~/plan/del/{id}(id = ${plan.id})}">x</a></td>
 					</tr>
 				  </tbody>
 				</table>
