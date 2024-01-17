@@ -1,6 +1,7 @@
 package com.spring.tutoriasEDU.planes;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.spring.tutoriasEDU.tutores.Tutor;
 
 
 
@@ -42,7 +45,13 @@ public class PlanController {
 	@GetMapping("/plan/{id}")
 	public ModelAndView tutoria(@PathVariable long id) {
 		
-		return null;
+		Plan plan = planDao.findById(id).get();
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("plan");
+		model.addObject("plan", plan);
+		
+		return model;
 	}	
 	
 	
@@ -86,7 +95,20 @@ public class PlanController {
 	@GetMapping("/plan/tutor/del/{idPlan}")
 	public ModelAndView eliminarTutoriaTutor(@PathVariable long idPlan) {
 		
-		return null;
+		Optional<Plan> plan = planDao.findById(idPlan);
+		if(plan.isPresent()) {
+			
+			Plan planazo = plan.get();
+			Tutor tutor = planazo.getTutor();
+			planazo.setTutor(null);
+			tutor.setPlan(null);
+			planDao.save(planazo);
+		}
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("redirect:/plan");		
+		
+		return model;
 	}
 	
 	

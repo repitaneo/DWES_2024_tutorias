@@ -24,16 +24,21 @@
 					  <th scope="col">Nombre</th>
 					  <th scope="col">Tutor</th>
 					  <th scope="col">Curso</th>
-					  <th scope="col">X</th>
+					  <th scope="col">Eliminar</th>
 					</tr>
 				  </thead>
 				  <tbody>
 					<tr th:each="plan: ${planes}">
 					  <th scope="row" th:text="${plan.id}">ID</th>
-					  <td th:text="${plan.nombre}">Nombre</td>
-					  <td th:text="${plan.tutor?.nombre}">Tutor</td>
+					  <td>
+					  	<a th:href="@{~/plan/{id}(id = ${plan.id})}" th:text="${plan.nombre}">nombre</a>
+					  </td>
+					  <td>
+					  	<a th:if="${plan.tutor != null}" class="badge badge-pill badge-warning" th:href="@{~/plan/tutor/del/{id}(id = ${plan.id})}">X</a>
+					  	<span th:text="${plan.tutor?.nombre}">Tutor</span>
+					  </td>
 					  <td th:text="${plan.curso?.nombre}">Curso</td>
-					  <td><a th:if="${plan.tutor == null}" class="btn btn-outline-danger btn-sm" href="" th:href="@{~/plan/del/{id}(id = ${plan.id})}">x</a></td>
+					  <td><a th:if="${plan.tutor == null}" class="badge badge-pill badge-danger" href="" th:href="@{~/plan/del/{id}(id = ${plan.id})}">eliminar</a></td>
 					</tr>
 				  </tbody>
 				</table>
