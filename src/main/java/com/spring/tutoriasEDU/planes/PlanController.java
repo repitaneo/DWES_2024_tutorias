@@ -61,7 +61,11 @@ public class PlanController {
 	@GetMapping("/plan/add")
 	public ModelAndView addPlan() {
 				
-		return null;
+		ModelAndView model = new ModelAndView();
+		model.setViewName("formPlan");
+		model.addObject("plan", new Plan());
+		
+		return model;
 	}	
 
 	
@@ -120,7 +124,12 @@ public class PlanController {
 	@PostMapping("/plan/save")
 	public ModelAndView formTutoria(@ModelAttribute Plan plan) {
 				
-		return null;
+		planDao.save(plan);
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("redirect:/plan");	
+		
+		return model;
 	}	
 	
 }
