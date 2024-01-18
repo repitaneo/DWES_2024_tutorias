@@ -37,7 +37,8 @@
 		
 	    </div> 
 	    <div class="col col-md-5 d-flex justify-content-between align-items-left">
-			<a th:href="@{~/plan}" class="btn btn-primary btn-sm">volver</a>
+			<p><a th:href="@{~/plan}" class="btn btn-primary btn-sm">volver</a></p>
+			<p><a th:href="@{~/plan/edit/{id}(id=${plan.id})}" class="btn btn-outline-primary btn-sm">editar</a></p>
 	    </div>
 		
 	  </div>

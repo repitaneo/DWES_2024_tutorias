@@ -74,7 +74,17 @@ public class PlanController {
 	@GetMapping("/plan/edit/{id}")
 	public ModelAndView editPlan(@PathVariable long id) {
 				
-		return null;
+		ModelAndView model = new ModelAndView();
+		
+		Optional<Plan> planazo = planDao.findById(id);
+		if(planazo.isPresent()) {
+			
+			model.addObject("plan", planazo.get());
+			model.setViewName("formPlan");
+		}
+		else model.setViewName("redirect:/plan");	
+		
+		return model;
 	}	
 	
 	
