@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.tutoriasEDU.Curso.CursoDao;
 import com.spring.tutoriasEDU.tutores.Tutor;
 
 
@@ -24,6 +25,9 @@ public class PlanController {
 	
 	@Autowired
 	PlanDao planDao;
+	
+	@Autowired
+	CursoDao cursoDao;
 	
 	
 	@GetMapping("/plan")
@@ -80,6 +84,8 @@ public class PlanController {
 		if(planazo.isPresent()) {
 			
 			model.addObject("plan", planazo.get());
+			model.addObject("cursos", cursoDao.findAll());
+
 			model.setViewName("formPlan");
 		}
 		else model.setViewName("redirect:/plan");	
