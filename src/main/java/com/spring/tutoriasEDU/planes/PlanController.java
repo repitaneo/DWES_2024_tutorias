@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.tutoriasEDU.Curso.CursoDao;
 import com.spring.tutoriasEDU.tutores.Tutor;
+import com.spring.tutoriasEDU.tutores.TutorDAO;
 
 
 
@@ -29,6 +30,8 @@ public class PlanController {
 	@Autowired
 	CursoDao cursoDao;
 	
+	@Autowired
+	TutorDAO tutorDao;
 	
 	@GetMapping("/plan")
 	public ModelAndView tutorias() {
@@ -85,6 +88,7 @@ public class PlanController {
 			
 			model.addObject("plan", planazo.get());
 			model.addObject("cursos", cursoDao.findAll());
+			model.addObject("tutores", tutorDao.getTutoresNoEnlazados());
 
 			model.setViewName("formPlan");
 		}
@@ -139,7 +143,9 @@ public class PlanController {
 	
 	@PostMapping("/plan/save")
 	public ModelAndView formTutoria(@ModelAttribute Plan plan) {
-				
+	
+		Tutor tutor = plan.getTutor();
+		tutor.setPlan(plan);
 		planDao.save(plan);
 		
 		ModelAndView model = new ModelAndView();

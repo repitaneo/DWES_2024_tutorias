@@ -25,7 +25,13 @@
 				<p class="card-text">
 					<ul class="list-group">
 					  <li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
-						Tutoría: TUTOR</span>
+						Tutoría: 
+							<select th:if="${plan.tutor==null}" class="form-control" th:field="*{tutor}">
+      							<option th:each="t:${tutores}" th:value="${t.id}" th:text="${t.nombre}">OPCION</option>
+						    </select>
+						    <select th:if="${plan.tutor!=null}" class="form-control" th:field="*{tutor}">
+      							<option th:value="*{tutor.id}" th:text="*{tutor.nombre}">OPCION</option>
+							</select>
 					  </li>
 					  <li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
 						Curso
