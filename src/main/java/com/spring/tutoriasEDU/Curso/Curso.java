@@ -19,6 +19,7 @@ import jakarta.persistence.OneToMany;
 public class Curso {
 
 	
+	
 	@Id	
 	private String nombre;
 	

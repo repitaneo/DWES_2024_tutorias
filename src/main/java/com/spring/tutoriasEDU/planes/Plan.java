@@ -17,6 +17,8 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class Plan {
 
+	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;

@@ -36,6 +36,7 @@ public class PlanController {
 	@GetMapping("/plan")
 	public ModelAndView tutorias() {
 
+		
 		ModelAndView model = new ModelAndView();
 		model.setViewName("planes");
 		
