@@ -4,12 +4,12 @@ import jakarta.persistence.Entity;
 
 import java.util.Collection;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
 import jakarta.persistence.Id;
 
 @Entity
-public class Usuario implements UserDetails {
+public class Usuario { //implements UserDetails {
 
 	@Id
 	private String usuario;
@@ -30,7 +30,7 @@ public class Usuario implements UserDetails {
 		this.password = password;
 	}
 	
-	
+	/*
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
@@ -61,5 +61,5 @@ public class Usuario implements UserDetails {
 		return true;
 	}
 	
-	
+	*/
 }
