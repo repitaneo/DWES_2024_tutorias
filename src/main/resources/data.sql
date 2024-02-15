@@ -6,6 +6,7 @@ insert into curso (nombre) values ('3A');
 insert into curso (nombre) values ('3B');
 insert into curso (nombre) values ('4A');
 
+
 insert into plan (nombre) values ('P2023-2024-1A');
 insert into plan (nombre) values ('P2023-2024-1B');
 insert into plan (nombre) values ('P2023-2024-2A');
@@ -29,6 +30,9 @@ insert into actividad (obligatoria,nombre,descripcion) values (true,'Jugar','Ens
 insert into actividad (obligatoria,nombre,descripcion) values (true,'Pintar','Enseñar a pintar');
 
 insert into enmarca (plan_id, actividad_id,fecha) values (1,1,'hoy');
+insert into enmarca (plan_id, actividad_id,fecha) values (1,2,'hoy');
+insert into enmarca (plan_id, actividad_id,fecha) values (2,1,'hoy');
+insert into enmarca (plan_id, actividad_id,fecha) values (2,2,'hoy');
 
 
 
