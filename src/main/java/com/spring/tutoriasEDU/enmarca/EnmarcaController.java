@@ -69,7 +69,7 @@ public class EnmarcaController {
 		enmarcaDao.save(enmarca);
 		
 		ModelAndView model = new ModelAndView();
-		model.setViewName("redirect:/enmarca");	
+		model.setViewName("redirect:/plan/"+enmarca.getPlan().getId());	
 		
 		return model;
 	}	

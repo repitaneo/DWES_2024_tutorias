@@ -67,6 +67,34 @@
 			
 	    </div>
 	    <div class="col col-md-4">
+			
+		<form th:if="${not #lists.isEmpty(actividades)}" th:action="@{~/enmarca/save}" th:object="${enmarca}" method="post" >
+			<div class="card bg-light mb-3" style="max-width: 18rem;">
+			  <div class="card-header"></div>
+			  <div class="card-body">
+				<h5 class="card-title"><input type="text" th:field="*{fecha}" size=10/></h5>
+				<p class="card-text">
+					<ul class="list-group">
+					  <li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
+						<span class="mr-4">Plan</span> 
+						    <select class="form-control" th:field="*{plan}">
+      							<option th:value="${plan.id}" th:text="${plan.nombre}">OPCION</option>
+							</select>
+					  </li>
+					  <li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
+						<span class="mr-4">Actividad</span> 
+						 	<select class="form-control" th:field="*{actividad}">
+      							<option th:each="a:${actividades}" th:value="${a.id}" th:text="${a.nombre}">OPCION</option>
+						    </select>
+					  </li>
+					</ul>
+				</p>
+			  </div>
+			</div>	
+			<p><input type="submit" class="btn btn-primary" value="enviar"/></p>
+			</form>	
+			
+			
 	    </div>
 	 </div>
 	 	  
