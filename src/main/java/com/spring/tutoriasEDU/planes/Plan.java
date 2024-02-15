@@ -1,8 +1,12 @@
 package com.spring.tutoriasEDU.planes;
 
+import java.util.List;
+
 import com.spring.tutoriasEDU.Curso.Curso;
+import com.spring.tutoriasEDU.enmarca.Enmarca;
 import com.spring.tutoriasEDU.tutores.Tutor;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 
@@ -34,8 +39,21 @@ public class Plan {
 	@JoinColumn(name="FK_CURSO")
 	private Curso curso;
 	
+	@OneToMany(targetEntity=Enmarca.class,mappedBy="plan",cascade = CascadeType.ALL)
+	private List<Enmarca> enmarcaciones;
 	
 	
+	
+	
+	
+	public List<Enmarca> getEnmarcaciones() {
+		return enmarcaciones;
+	}
+
+	public void setEnmarcaciones(List<Enmarca> enmarcaciones) {
+		this.enmarcaciones = enmarcaciones;
+	}
+
 	public Curso getCurso() {
 		return curso;
 	}
