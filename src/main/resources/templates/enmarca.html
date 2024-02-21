@@ -15,7 +15,9 @@
 	      One of three columns
 	    </div>
 	    <div class="col col-md-10">
-	          <table class="table table-sm table-hover">
+			  <p th:text="${#lists.size(enmarcaciones)} +' elementos en la tabla'">hola</p>
+			  <p th:if="${#lists.isEmpty(enmarcaciones)}">Vacía la tabla</p>
+	          <table class="table table-sm table-hover" th:unless="${#lists.isEmpty(enmarcaciones)}">
 			    <thead>
 			    <tr>
 			        <th>Plan</th>
@@ -29,7 +31,7 @@
 						<td th:text="${enmarca.plan.id}+'# '+${enmarca.plan.nombre}"></td>
 						<td th:text="${enmarca.actividad.id}+'# '+${enmarca.actividad.nombre}"></td>
 						<td th:text="${enmarca.fecha}"></td>
-						<td></td>
+						<td><a th:href="@{~/enmarca/del/{idPlan}/{idActividad}(idPlan=${enmarca.plan.id}, idActividad=${enmarca.actividad.id})}">Eliminar</a></td>
 				    </tr>
 				</tbody>
 			</table>

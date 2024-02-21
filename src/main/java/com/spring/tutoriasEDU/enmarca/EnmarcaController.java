@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -70,6 +71,25 @@ public class EnmarcaController {
 		
 		ModelAndView model = new ModelAndView();
 		model.setViewName("redirect:/plan/"+enmarca.getPlan().getId());	
+		
+		return model;
+	}	
+	
+	
+	
+	
+	@GetMapping("/enmarca/del/{idPlan}/{idActividad}")
+	public ModelAndView delPlan(@PathVariable long idPlan, @PathVariable long idActividad) {
+				
+		
+		EnmarcaKey key = new EnmarcaKey();
+		key.setActividadId(idActividad);
+		key.setPlanId(idPlan);
+
+		enmarcaDao.deleteById(key);
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("redirect:/enmarca");
 		
 		return model;
 	}	
