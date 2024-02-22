@@ -3,9 +3,9 @@ package com.spring.tutoriasEDU.servicios;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +14,8 @@ import com.spring.tutoriasEDU.usuarios.UsuarioDao;
 
 
 @Service
-public class UserDetailsServiceImpl { 
-//implements UserDetailsService {
-	/*
+public class UserDetailsServiceImpl implements UserDetailsService {
+	
 	
 	@Autowired
 	private UsuarioDao usuarioDao;
@@ -32,5 +31,4 @@ public class UserDetailsServiceImpl {
 		
 		throw new UsernameNotFoundException(username);
 	}
-*/
 }

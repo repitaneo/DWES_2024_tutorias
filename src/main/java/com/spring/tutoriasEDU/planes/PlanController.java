@@ -1,10 +1,12 @@
 package com.spring.tutoriasEDU.planes;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,8 @@ import com.spring.tutoriasEDU.actividad.ActividadDao;
 import com.spring.tutoriasEDU.enmarca.Enmarca;
 import com.spring.tutoriasEDU.tutores.Tutor;
 import com.spring.tutoriasEDU.tutores.TutorDAO;
+
+import jakarta.validation.Valid;
 
 
 
@@ -80,6 +84,9 @@ public class PlanController {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("formPlan");
 		model.addObject("plan", new Plan());
+		model.addObject("tutores", tutorDao.getTutoresNoEnlazados());
+		model.addObject("cursos", cursoDao.findAll());
+		
 		
 		return model;
 	}	
@@ -151,13 +158,29 @@ public class PlanController {
 	
 	
 	@PostMapping("/plan/save")
-	public ModelAndView formTutoria(@ModelAttribute Plan plan) {
+	public ModelAndView formTutoria(@ModelAttribute @Valid Plan plan,
+			BindingResult bindingResult) {
 	
+		ModelAndView model = new ModelAndView();
+		if(bindingResult.hasErrors()) {
+			
+			model.setViewName("formPlan");	
+			model.addObject("plan", plan);
+			
+			ArrayList<Tutor> tutores = new ArrayList<Tutor>(); 
+			tutores.addAll(tutorDao.getTutoresNoEnlazados());
+			tutores.add(plan.getTutor());
+			
+			model.addObject("tutores", tutores);
+			model.addObject("cursos", cursoDao.findAll());
+
+			return model;
+		}
+		
 		Tutor tutor = plan.getTutor();
 		tutor.setPlan(plan);
 		planDao.save(plan);
 		
-		ModelAndView model = new ModelAndView();
 		model.setViewName("redirect:/plan");	
 		
 		return model;
