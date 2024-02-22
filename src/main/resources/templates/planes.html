@@ -14,17 +14,14 @@
     <title>Hola caracola</title>
   </head>
   <body>
+	  
+	  <div class="row" th:insert="~{menu :: menuSuperior}"></div>
+			  
+	  
 		<div class="row">
 			<div class="col-1"></div>
 			<div class="col-10">
 			
-<<<<<<< HEAD
-			<p th:text="${session.user?.usuario}">
-  				Welcome to our grocery store, Sebastian Pepper!
-			</p>
-=======
-			<p>Logged user: <span sec:authentication="name">Bob</span></p>
->>>>>>> f5d6183eb8d8dabcbeebbba61642d0a392f37bd8
 			
 				<table class="table table-sm table-hover">
 				  <thead>

@@ -167,11 +167,9 @@ public class PlanController {
 			model.setViewName("formPlan");	
 			model.addObject("plan", plan);
 			
-			ArrayList<Tutor> tutores = new ArrayList<Tutor>(); 
-			tutores.addAll(tutorDao.getTutoresNoEnlazados());
-			tutores.add(plan.getTutor());
+			plan.setTutor(null);
 			
-			model.addObject("tutores", tutores);
+			model.addObject("tutores", tutorDao.getTutoresNoEnlazados());
 			model.addObject("cursos", cursoDao.findAll());
 
 			return model;
