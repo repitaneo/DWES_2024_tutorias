@@ -6,8 +6,6 @@ insert into curso (nombre) values ('3A');
 insert into curso (nombre) values ('3B');
 insert into curso (nombre) values ('4A');
  
- 
-
 insert into plan (nombre) values ('P2023-2024-1A');
 insert into plan (nombre) values ('P2023-2024-1B');
 insert into plan (nombre) values ('P2023-2024-2A');
@@ -21,6 +19,7 @@ insert into tutor (nombre,email,plan) values ('Maria','maria@educastur.org',3);
 insert into tutor (nombre,email,plan) values ('Marta','marta@educastur.org',4);
 insert into tutor (nombre,email,plan) values ('Pedro','pedro@educastur.org',5);
 insert into tutor (nombre,email,plan) values ('Lucia','lucia@educastur.org',6);
+
 
 
 insert into usuario (usuario,password) values ('marcos','$2a$12$3fP2T8dyuujgKtm9Qi.W7.zMN510cFRL0jAdtZkK9IfUr8SMMF6ia');
