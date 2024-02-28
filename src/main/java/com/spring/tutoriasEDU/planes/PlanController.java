@@ -42,6 +42,16 @@ public class PlanController {
 	@Autowired
 	ActividadDao actividadDao;
 	
+	
+	
+	@GetMapping("/")
+	public ModelAndView inicio() {
+
+		ModelAndView model = new ModelAndView("index");
+		
+		return model;
+	}
+	
 	@GetMapping("/plan")
 	public ModelAndView tutorias() {
 

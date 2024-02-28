@@ -11,7 +11,6 @@
       <a class="nav-item nav-link" href="#" th:href="@{~/logout}">Logout</a>
       <a class="nav-item nav-link" href="#" sec:authorize="hasAuthority('ADMIN')">Anda! un ADMIN!!</a>
       <a class="nav-item nav-link" href="#" sec:authorize="hasAuthority('USER')">usuario cutre</a>
-      <a class="nav-item nav-link" href="#" sec:authentication="principal.authorities">permisos</a>
     </div>
   </div>
 </nav>
