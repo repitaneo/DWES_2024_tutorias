@@ -17,7 +17,6 @@
 	  
 	  <div class="row" th:insert="~{menu :: menuSuperior}"></div>
 			  
-	  
 		<div class="row">
 			<div class="col-1"></div>
 			<div class="col-10">
@@ -40,11 +39,11 @@
 					  	<a th:href="@{~/plan/{id}(id = ${plan.id})}" th:text="${plan.nombre}">nombre</a>
 					  </td>
 					  <td>
-					  	<a th:if="${plan.tutor != null}" class="badge badge-pill badge-warning" th:href="@{~/plan/tutor/del/{id}(id = ${plan.id})}">X</a>
+					  	<a sec:authorize="hasAuthority('ADMIN')" th:if="${plan.tutor != null}" class="badge badge-pill badge-warning" th:href="@{~/plan/tutor/del/{id}(id = ${plan.id})}">X</a>
 					  	<span th:text="${plan.tutor?.nombre}">Tutor</span>
 					  </td>
 					  <td th:text="${plan.curso?.nombre}">Curso</td>
-					  <td><a th:if="${plan.tutor == null}" class="badge badge-pill badge-danger" href="" th:href="@{~/plan/del/{id}(id = ${plan.id})}">eliminar</a></td>
+					  <td><a sec:authorize="hasAuthority('ADMIN')" th:if="${plan.tutor == null}" class="badge badge-pill badge-danger" href="" th:href="@{~/plan/del/{id}(id = ${plan.id})}">eliminar</a></td>
 					</tr>
 				  </tbody>
 				</table>
